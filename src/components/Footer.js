@@ -54,11 +54,21 @@ const Footer = () => {
                 
               </div>
               <div className='social-icons d-flex align-itmes-center gap-30'>
-                <a className='text-white' href="https://www.linkedin.com/in/aviral-verma-iiita/"> <BsLinkedin className='fs-4'/> </a>
-                <a className='text-white' href="https://github.com/aviralrabbit1"> <BsGithub className='fs-4'/> </a>
-                <a className='text-white' href="https://www.facebook.com/aviral.varma.3"> <BsFacebook className='fs-4'/></a>
-                <a className='text-white' href="https://www.instagram.com/aviral.rabbit/"> <BsInstagram className='fs-4'/> </a>                
-                <a className='text-white' href="https://www.youtube.com/channel/UCn-5DN10jktIfqLmo1Au0iA"> <BsYoutube className='fs-4'/> </a>                
+                <a className='text-white' target='_blank' rel='noreferrer'
+                href="https://www.linkedin.com/in/aviral-verma-iiita/"> 
+                <BsLinkedin className='fs-4'/> </a>
+                <a className='text-white' target='_blank' rel='noreferrer'
+                href="https://github.com/aviralrabbit1"> 
+                <BsGithub className='fs-4'/> </a>
+                <a className='text-white' target='_blank' rel='noreferrer'
+                href="https://www.facebook.com/aviral.varma.3"> 
+                <BsFacebook className='fs-4'/></a>
+                <a className='text-white' target='_blank' rel='noreferrer'
+                href="https://www.instagram.com/aviral.rabbit/"> 
+                <BsInstagram className='fs-4'/> </a>                
+                <a className='text-white' target='_blank' rel='noreferrer'
+                href="https://www.youtube.com/channel/UCn-5DN10jktIfqLmo1Au0iA"> 
+                <BsYoutube className='fs-4'/> </a>                
               </div>
             </div>
             <div className='col-3'>
