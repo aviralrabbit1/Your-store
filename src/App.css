@@ -309,6 +309,24 @@ footer .input-group-text{
   overflow: hidden;
   /* Hides the small icons that then appear on hover */
 }
+
+.product-card:hover .product-image{
+  height: 270px;
+}
+.product-card:hover .product-image img{
+  object-fit: contain;
+  /* transition: 0.5s; */
+}
+.product-card:hover .product-image> img:nth-child(1){
+  display: none;
+}
+.product-card .product-image> img:last-child{
+  display: none;  
+}
+.product-card:hover .product-image> img:last-child{
+  display: block
+}
+
 .product-card:hover .action-bar{
   right: 15px;
 }
