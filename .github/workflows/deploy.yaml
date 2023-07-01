@@ -1,50 +1,15 @@
-name: React app deployment
-
+name: Deploy website
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches: 
-      - main 
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 jobs:
-  deploy:
+  build:
+    name: Deploying to website
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      # Checkout project repository
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      # Setup Node.js environment
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-
-      # Install dependencies
-      - name: Install dependencies
-        run: yarn install --prefer-offline
-
-      # Build Application
-      - name: Build application
-        run: yarn build
-
-      # Deploy to Github Pages
-      - id: deploy
-        name: Deploy to Github Pages
-        uses: fcodelabs/react-deploy-github-pages-action@v1.0.0
-        with:
-          build_dir: dist
+      - uses: actions/checkout@v2
+      - uses: RomanosTrechlis/actions-react-build-push@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      
