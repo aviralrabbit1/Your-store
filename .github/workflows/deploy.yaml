@@ -1,20 +1,52 @@
-name: Deploy website
+name: React app deployment
+
 on:
   push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main 
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build:
-    name: Deploying to website
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: RomanosTrechlis/actions-react-build-push@master
+      # Checkout project repository
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install --prefer-offline
+
+      - name: Surge-Deploy-React-App
+        uses: UsmanAsif193/Surge-Action@v1.03
+
+      - name: Deploying on Surge
+        run: surge ./build Sample-Project.surge.sh --token ${{secrets.SURGE_TOKEN}}
+
+      # Deploy to Github Pages
+      - id: deploy
+        name: Deploy to Github Pages
+        uses: fcodelabs/react-deploy-github-pages-action@v1.0.0
+        with:
+          build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          build_directory: docs
-          pr_branch: prod
-          package_manager: npm
-          build_command: npm run build
+
+      
