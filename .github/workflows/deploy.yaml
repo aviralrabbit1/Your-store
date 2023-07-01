@@ -15,7 +15,7 @@ jobs:
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
       runs: 
-        using: 'composite'
+        uses: 'composite'
         steps: 
           - run : npm i
             shell: bash
