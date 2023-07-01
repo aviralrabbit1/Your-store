@@ -14,7 +14,6 @@ jobs:
       name: github-pages
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
-    steps:
       name: 'Deploy react app to github pages'
       branding:
         color: blue
