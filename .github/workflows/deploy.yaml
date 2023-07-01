@@ -14,8 +14,6 @@ jobs:
       name: github-pages
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
-      runs: 
-        uses: 'composite'
         steps: 
           - run : npm i
             shell: bash
