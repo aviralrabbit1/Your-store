@@ -13,3 +13,8 @@ jobs:
       - uses: RomanosTrechlis/actions-react-build-push@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          build_directory: build
+          pr_branch: prod
+          package_manager: npm
+          build_command: npm run build
